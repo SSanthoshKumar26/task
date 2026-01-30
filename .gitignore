@@ -1,0 +1,28 @@
+# Node
+node_modules/
+dist/
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+
+# Database
+# For SQLite, usually we don't push the DB unless it's a seed demo. 
+# Prompt said "Presets must persist (DB ...)", but usually we don't push binary DBs.
+# I will ignore it to be professional, as users can seed via the button.
+*.db
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

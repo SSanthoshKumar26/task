@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+.app-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-6);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Force center alignment of children */
+}
+
+/* Header Section */
+.header {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: var(--space-8);
+  position: relative;
+  padding: var(--space-8) 0;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+}
+
+.title-section h1 {
+  font-family: 'Outfit', sans-serif;
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin: 0 0 var(--space-3) 0;
+  background: linear-gradient(135deg, white 20%, #a5b4fc 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+}
+
+.title-section p {
+  font-size: 1.25rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0 auto;
+}
+
+.controls-section {
+  margin-top: var(--space-6);
+}
+
+/* Toolbar (Filter triggers) */
+.toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-4);
+  /* Increased gap */
+  margin-bottom: var(--space-8);
+  background: rgba(15, 23, 42, 0.4);
+  padding: 1rem 2rem;
+  /* Larger padding */
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  width: auto;
+  transition: var(--transition);
+  position: relative;
+  z-index: 50;
+  max-width: 90vw;
+  /* Prevent overflow */
+}
+
+.search-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  justify-content: center;
+}
+
+/* Ensure buttons don't shrink weirdly */
+.toolbar .btn {
+  white-space: nowrap;
+}
+
+/* Presets Dropdown */
+.presets-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  right: 0;
+  left: 0;
+  /* Align across the whole toolbar width potentially, or just anchor right */
+  margin: auto;
+  /* To center if specific width */
+  width: 300px;
+  left: 50%;
+  /* Center relative to parent */
+  transform: translateX(-50%);
+  /* Center relative to parent */
+  right: auto;
+  /* Reset right */
+
+  background: #0f172a;
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 1000;
+  padding: var(--space-2);
+  overflow: hidden;
+  animation: slideUpFade 0.2s ease-out backwards;
+}
+
+@keyframes slideUpFade {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.preset-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--color-text-secondary);
+  transition: all 0.2s;
+  margin-bottom: 2px;
+}
+
+.preset-item:hover {
+  background: rgba(139, 92, 246, 0.1);
+  color: white;
+}
+
+.active-filters-badges {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: var(--space-2);
+}
+
+.filter-badge {
+  background: rgba(139, 92, 246, 0.15);
+  color: #a78bfa;
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+@media (max-width: 640px) {
+  .title-section h1 {
+    font-size: 2.5rem;
+  }
+
+  .toolbar {
+    width: 100%;
+    flex-direction: column;
+    /* Stack only on mobile */
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+  }
+
+  .search-controls {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .filter-row {
+    grid-template-columns: 1fr;
+  }
+}
